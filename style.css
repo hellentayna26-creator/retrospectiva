@@ -1,0 +1,1560 @@
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #090909;
+    color: #f5f1ec;
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+    z-index: 999;
+
+    background-image:
+        radial-gradient(circle at 10% 15%, rgba(255,255,255,0.45) 1px, transparent 2px),
+        radial-gradient(circle at 25% 70%, rgba(255,255,255,0.35) 1.5px, transparent 2.5px),
+        radial-gradient(circle at 45% 35%, rgba(255,255,255,0.30) 1px, transparent 2px),
+        radial-gradient(circle at 65% 80%, rgba(255,255,255,0.40) 1.5px, transparent 2.5px),
+        radial-gradient(circle at 82% 25%, rgba(255,255,255,0.35) 1px, transparent 2px),
+        radial-gradient(circle at 92% 65%, rgba(255,255,255,0.30) 1.5px, transparent 2.5px);
+
+    background-size:
+        160px 160px,
+        210px 210px,
+        190px 190px,
+        230px 230px,
+        180px 180px,
+        250px 250px;
+
+    animation: estrelas 10s linear infinite;
+}
+
+@keyframes estrelas {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-200px);
+    }
+}
+#historia {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
+/* =========================
+   ABERTURA
+========================= */
+
+.abertura {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #090909;
+}
+
+.data-abertura {
+    font-size: 14px;
+    letter-spacing: 5px;
+    margin-bottom: 45px;
+
+    opacity: 0;
+animation: aparecerAbertura 1.5s ease forwards;
+}
+
+.botao-play {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: transparent;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    opacity: 0;
+animation: aparecerAbertura 1.5s ease forwards;
+animation-delay: 0.5s;
+}
+
+.botao-play:hover {
+    transform: scale(1.08);
+}
+
+.texto-play {
+    margin-top: 25px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    opacity: 0.7;
+
+    opacity: 0;
+animation: aparecerAbertura 1.5s ease forwards;
+animation-delay: 0.9s;
+}
+
+
+/* =========================
+   INTRODUÇÃO
+========================= */
+
+.introducao {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    background: #090909;
+
+    opacity: 0;
+transition: opacity 1s ease;
+}
+
+.introducao h1 {
+    max-width: 700px;
+    font-size: 40px;
+    font-weight: normal;
+    line-height: 1.4;
+
+    transform: translateY(15px);
+transition: transform 1s ease;
+}
+
+
+/* =========================
+   NOSSA HISTÓRIA
+========================= */
+
+.historia-inicio {
+    height: 100vh;
+    scroll-snap-align: start;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 30px;
+}
+
+.historia-inicio h1 {
+    font-size: 60px;
+    font-weight: normal;
+    margin: 20px 0;
+}
+
+.historia-inicio p {
+    max-width: 550px;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.pequeno {
+    font-size: 12px;
+    letter-spacing: 5px;
+    opacity: 0.65;
+}
+
+
+/* =========================
+   CAPÍTULOS
+========================= */
+
+.capitulo {
+    min-height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+
+    padding: 60px 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    opacity: 0.45;
+transform: scale(0.97);
+transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.capitulo > span {
+    font-size: 11px;
+    letter-spacing: 4px;
+    opacity: 0.5;
+    margin-bottom: 20px;
+}
+
+.capitulo h2 {
+    max-width: 700px;
+    font-size: 38px;
+    font-weight: normal;
+    line-height: 1.25;
+    margin-bottom: 28px;
+
+    opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.9s ease, transform 0.9s ease;
+transition-delay: 0.15s;
+}
+
+.capitulo img {
+    width: min(500px, 85vw);
+    max-height: 55vh;
+    object-fit: contain;
+    border-radius: 10px;
+    margin-bottom: 15px;
+
+    opacity: 0;
+transform: translateY(25px) scale(0.96);
+transition: opacity 1s ease, transform 1s ease, filter 1s ease;}
+
+.capitulo p {
+    max-width: 600px;
+    font-size: 17px;
+    line-height: 1.7;
+    white-space: pre-line;
+
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+    transition-delay: 0.25s;
+}
+
+.secao-ativa img {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.55));
+}
+
+.secao-ativa p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.secao-ativa h2 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.secao-ativa.final h1,
+.secao-ativa.final h2,
+.secao-ativa.final h3 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.secao-ativa.final p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.secao-ativa.final h1 {
+    transition-delay: 0s;
+}
+
+.secao-ativa.final h2 {
+    transition-delay: 0.6s;
+}
+
+.secao-ativa.final h3 {
+    transition-delay: 1.2s;
+}
+
+.secao-ativa.final p {
+    transition-delay: 1.8s;
+}
+
+.data-capitulo {
+    font-size: 11px !important;
+    letter-spacing: 5px;
+    opacity: 0.5;
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final {
+    height: 100vh;
+    scroll-snap-align: start;
+
+    padding: 100px 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.final > * {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.final > p:nth-child(2),
+.final > p:nth-child(3) {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.final > * {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.secao-ativa.final > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.secao-ativa.final > *:nth-child(1) {
+    transition-delay: 0s;
+}
+
+.secao-ativa.final > *:nth-child(2) {
+    transition-delay: 0.7s;
+}
+
+.secao-ativa.final > *:nth-child(3) {
+    transition-delay: 1.4s;
+}
+
+.secao-ativa.final > *:nth-child(4) {
+    transition-delay: 2.1s;
+}
+
+.secao-ativa.final > *:nth-child(5) {
+    transition-delay: 2.8s;
+}
+
+.secao-ativa.final > *:nth-child(6) {
+    transition-delay: 3.5s;
+}
+
+.secao-ativa.final > *:nth-child(7) {
+    transition-delay: 4.2s;
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .data-abertura {
+        font-size: 11px;
+        letter-spacing: 3px;
+    }
+
+    .introducao h1 {
+        font-size: 28px;
+    }
+
+    .historia-inicio h1 {
+        font-size: 45px;
+    }
+
+    .capitulo h2 {
+        font-size: 30px;
+    }
+
+    .capitulo p {
+        font-size: 16px;
+    }
+
+    .capitulo img {
+    width: 85vw;
+    max-height: 45vh;
+    margin-bottom: 10px;
+}
+
+.capitulo {
+    padding: 40px 20px;
+}
+
+.capitulo h2 {
+    font-size: 28px;
+    max-width: 90vw;
+}
+
+.capitulo p {
+    font-size: 15px;
+    max-width: 88vw;
+    line-height: 1.6;
+}
+
+    .final h1 {
+        font-size: 35px;
+    }
+        .sistema-solar {
+        width: 220px;
+        height: 220px;
+    }
+
+    .orbita {
+        width: 180px;
+        height: 180px;
+    }
+
+    .sol {
+        width: 58px;
+        height: 58px;
+    }
+
+    .terra {
+        width: 22px;
+        height: 22px;
+        top: -11px;
+    }
+
+    .subtitulo-historia {
+        font-size: 14px;
+        max-width: 85vw;
+    }
+
+    .contador {
+        gap: 12px;
+    }
+
+    .contador strong {
+        font-size: 21px;
+    }
+
+    .contador span {
+        font-size: 7px;
+        letter-spacing: 1.5px;
+    }
+
+    .texto-contador {
+        font-size: 13px;
+    }
+
+        .seta-proxima {
+        bottom: 25px;
+    }
+
+        .pagina-estacao {
+        padding: 30px 20px;
+    }
+
+    .pagina-estacao h1 {
+        font-size: 55px;
+    }
+
+    .pagina-estacao .pequeno {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .texto-estacao {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .folhas-outono span {
+        font-size: 18px;
+    }
+
+        .pagina-lua {
+        padding: 30px 20px;
+    }
+
+    .pagina-lua .pequeno {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .lua-container {
+        width: 170px;
+        height: 170px;
+        margin-bottom: 25px;
+    }
+
+    .lua,
+    .lua::after {
+        width: 125px;
+        height: 125px;
+    }
+
+    .pagina-lua h1 {
+        font-size: 38px;
+    }
+
+    .texto-lua {
+        max-width: 88vw;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .data-lua {
+        font-size: 8px;
+        letter-spacing: 3px;
+    }
+
+        .pagina-signo {
+        padding: 30px 20px;
+    }
+
+    .pagina-signo .pequeno {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .constelacao-aries {
+        width: 200px;
+        height: 165px;
+    }
+
+    .simbolo-aries {
+        font-size: 78px;
+    }
+
+    .pagina-signo h1 {
+        font-size: 42px;
+    }
+
+    .texto-signo {
+        max-width: 88vw;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .data-signo {
+        font-size: 8px;
+        letter-spacing: 3px;
+    }
+
+}
+
+.indicadores {
+    right: 10px;
+    width: 4px;
+    height: 280px;
+}
+
+.indicador {
+    width: 2px;
+    height: 7px;
+}
+
+.indicador.ativo {
+    width: 4px;
+    height: 20px;
+}
+
+.indicadores {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 6px;
+    height: 420px;
+
+    display: grid;
+    grid-template-rows: repeat(17, 1fr);
+    align-items: center;
+
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.indicador {
+    width: 3px;
+    height: 10px;
+
+    justify-self: center;
+
+    background: rgba(255, 255, 255, 0.35);
+
+    transition: all 0.3s ease;
+}
+
+.indicador.ativo {
+    width: 5px;
+    height: 28px;
+
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.abertura {
+    padding: 30px 20px;
+}
+
+.data-abertura {
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+.botao-play {
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+}
+
+.texto-play {
+    font-size: 13px;
+    margin-top: 18px;
+}
+
+.secao-ativa {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.secao-ativa img {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+@keyframes aparecerAbertura {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.introducao.visivel {
+    opacity: 1;
+}
+
+.introducao.visivel h1 {
+    transform: translateY(0);
+}
+
+/* =========================================
+   NOSSA HISTÓRIA — SISTEMA SOLAR
+========================================= */
+
+.historia-inicio {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at center, rgba(255,255,255,0.03), transparent 45%);
+}
+
+.subtitulo-historia {
+    max-width: 500px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.75;
+}
+
+/* SISTEMA SOLAR */
+
+.sistema-solar {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    margin: 10px auto 5px;
+}
+
+/* SOL */
+
+.sol {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        #fff7c2 0%,
+        #ffd76a 35%,
+        #f5a623 70%,
+        #d97916 100%
+    );
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    box-shadow:
+        0 0 20px rgba(255, 210, 90, 0.8),
+        0 0 50px rgba(255, 180, 50, 0.4),
+        0 0 90px rgba(255, 160, 30, 0.2);
+}
+
+/* ÓRBITA */
+
+.orbita {
+    position: absolute;
+
+    width: 210px;
+    height: 210px;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 50%;
+
+    animation: girar-orbita 12s linear infinite;
+}
+
+/* TERRA */
+
+.terra {
+    position: absolute;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    top: -12px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #79d7ff 0%,
+            #318bd1 45%,
+            #1764a0 75%,
+            #0d3f70 100%
+        );
+
+    box-shadow:
+        0 0 12px rgba(90, 190, 255, 0.8);
+}
+
+@keyframes girar-orbita {
+
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+
+}
+
+/* CONTADOR */
+
+.contador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 10px;
+}
+
+.contador div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contador strong {
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.contador span {
+    margin-top: 7px;
+
+    font-size: 8px;
+    letter-spacing: 2px;
+
+    opacity: 0.5;
+}
+
+.texto-contador {
+    margin-top: 18px;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    opacity: 0.65;
+}
+
+/* SETA */
+
+.seta-proxima {
+    position: absolute;
+    bottom: 0px;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    background: transparent;
+
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+
+    animation: seta-pulsar 1.8s ease-in-out infinite;
+}
+
+@keyframes seta-pulsar {
+
+    0%, 100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 0.45;
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(8px);
+        opacity: 1;
+    }
+
+}
+
+/* =========================================
+   PÁGINA — OUTONO
+========================================= */
+
+.pagina-estacao {
+    position: relative;
+
+    height: 100vh;
+    min-height: 100vh;
+
+    scroll-snap-align: start;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 30px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(130, 75, 25, 0.10),
+            transparent 55%
+        );
+}
+
+.pagina-estacao .pequeno {
+    font-size: 11px;
+    letter-spacing: 5px;
+    opacity: 0.55;
+
+    margin-bottom: 15px;
+}
+
+.pagina-estacao h1 {
+    font-size: 72px;
+    font-weight: normal;
+
+    font-style: italic;
+
+    margin: 0 0 25px;
+
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    animation: aparecer-outono 1.2s ease forwards;
+}
+
+.texto-estacao {
+    max-width: 500px;
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    animation:
+        aparecer-outono 1.2s ease 0.4s forwards;
+}
+
+@keyframes aparecer-outono {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* FOLHAS */
+
+.folhas-outono {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+}
+
+.folhas-outono span {
+    position: absolute;
+
+    top: -50px;
+
+    font-size: 22px;
+
+    opacity: 0.7;
+
+    animation: cair-folha linear infinite;
+}
+
+/* posições e velocidades diferentes */
+
+.folhas-outono span:nth-child(1) {
+    left: 8%;
+    animation-duration: 8s;
+    animation-delay: 0s;
+}
+
+.folhas-outono span:nth-child(2) {
+    left: 20%;
+    animation-duration: 11s;
+    animation-delay: 2s;
+}
+
+.folhas-outono span:nth-child(3) {
+    left: 35%;
+    animation-duration: 9s;
+    animation-delay: 4s;
+}
+
+.folhas-outono span:nth-child(4) {
+    left: 50%;
+    animation-duration: 12s;
+    animation-delay: 1s;
+}
+
+.folhas-outono span:nth-child(5) {
+    left: 65%;
+    animation-duration: 10s;
+    animation-delay: 3s;
+}
+
+.folhas-outono span:nth-child(6) {
+    left: 78%;
+    animation-duration: 9s;
+    animation-delay: 5s;
+}
+
+.folhas-outono span:nth-child(7) {
+    left: 88%;
+    animation-duration: 13s;
+    animation-delay: 1s;
+}
+
+.folhas-outono span:nth-child(8) {
+    left: 95%;
+    animation-duration: 10s;
+    animation-delay: 6s;
+}
+
+@keyframes cair-folha {
+
+    0% {
+        transform:
+            translateY(-50px)
+            translateX(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.7;
+    }
+
+    50% {
+        transform:
+            translateY(50vh)
+            translateX(40px)
+            rotate(180deg);
+    }
+
+    90% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform:
+            translateY(110vh)
+            translateX(-40px)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+
+}
+
+/* =========================================
+   PÁGINA — LUA QUARTO MINGUANTE
+========================================= */
+
+.pagina-lua {
+    position: relative;
+
+    height: 100vh;
+    min-height: 100vh;
+
+    scroll-snap-align: start;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 30px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(100, 100, 140, 0.08),
+            transparent 55%
+        );
+}
+
+/* PEQUENO TÍTULO */
+
+.pagina-lua .pequeno {
+    font-size: 11px;
+    letter-spacing: 5px;
+
+    opacity: 0.55;
+
+    margin-bottom: 25px;
+}
+
+/* LUA */
+
+.lua-container {
+    position: relative;
+
+    width: 190px;
+    height: 190px;
+
+    margin-bottom: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================================
+   LUA — QUARTO MINGUANTE
+========================================= */
+
+.lua {
+    width: 145px;
+    height: 145px;
+
+    border-radius: 50%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff8df 0%,
+            #eee4cc 48%,
+            #aaa1b8 52%,
+            #81798f 100%
+        );
+
+    box-shadow:
+        0 0 18px rgba(255,255,255,0.35),
+        0 0 45px rgba(220,220,255,0.20),
+        0 0 80px rgba(200,200,255,0.10);
+
+    animation: brilho-lua 4s ease-in-out infinite;
+}
+
+
+/* LUZ SUAVE SOBRE A PARTE ILUMINADA */
+
+.lua::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 27% 28%,
+            rgba(255,255,255,0.75) 0 3px,
+            transparent 4px
+        ),
+
+        radial-gradient(
+            circle at 22% 48%,
+            rgba(170,155,125,0.30) 0 18px,
+            transparent 19px
+        ),
+
+        radial-gradient(
+            circle at 34% 72%,
+            rgba(170,155,125,0.25) 0 13px,
+            transparent 14px
+        ),
+
+        radial-gradient(
+            circle at 43% 34%,
+            rgba(170,155,125,0.20) 0 8px,
+            transparent 9px
+        );
+
+    opacity: 0.85;
+}
+
+
+/* CRATERAS DA PARTE ESCURA */
+
+.lua::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 72% 28%,
+            rgba(55,48,70,0.25) 0 10px,
+            transparent 11px
+        ),
+
+        radial-gradient(
+            circle at 65% 58%,
+            rgba(55,48,70,0.20) 0 15px,
+            transparent 16px
+        ),
+
+        radial-gradient(
+            circle at 78% 73%,
+            rgba(55,48,70,0.18) 0 9px,
+            transparent 10px
+        ),
+
+        radial-gradient(
+            circle at 55% 43%,
+            rgba(55,48,70,0.15) 0 7px,
+            transparent 8px
+        );
+
+    opacity: 0.8;
+}
+
+
+/* BRILHO DA LUA */
+
+@keyframes brilho-lua {
+
+    0%, 100% {
+        transform: scale(1);
+
+        box-shadow:
+            0 0 18px rgba(255,255,255,0.35),
+            0 0 45px rgba(220,220,255,0.20),
+            0 0 80px rgba(200,200,255,0.10);
+    }
+
+    50% {
+        transform: scale(1.025);
+
+        box-shadow:
+            0 0 25px rgba(255,255,255,0.45),
+            0 0 60px rgba(220,220,255,0.25),
+            0 0 100px rgba(200,200,255,0.13);
+    }
+
+}
+
+/* BRILHO */
+
+@keyframes brilho-lua {
+
+    0%, 100% {
+        transform: scale(1);
+
+        box-shadow:
+            0 0 20px rgba(255,255,255,0.35),
+            0 0 50px rgba(220,220,255,0.18),
+            0 0 90px rgba(200,200,255,0.08);
+    }
+
+    50% {
+        transform: scale(1.025);
+
+        box-shadow:
+            0 0 25px rgba(255,255,255,0.45),
+            0 0 65px rgba(220,220,255,0.25),
+            0 0 110px rgba(200,200,255,0.12);
+    }
+
+}
+
+/* TÍTULO */
+
+.pagina-lua h1 {
+    font-size: 48px;
+
+    font-weight: normal;
+
+    font-style: italic;
+
+    margin: 0 0 20px;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    animation:
+        aparecer-lua 1.2s ease forwards;
+}
+
+/* TEXTO */
+
+.texto-lua {
+    max-width: 500px;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    animation:
+        aparecer-lua 1.2s ease 0.35s forwards;
+}
+
+/* DATA */
+
+.data-lua {
+    margin-top: 22px;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    opacity: 0;
+
+    animation:
+        aparecer-lua 1.2s ease 0.7s forwards;
+}
+
+@keyframes aparecer-lua {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+/* =========================================
+   PÁGINA — SIGNO ÁRIES
+========================================= */
+
+.pagina-signo {
+    position: relative;
+
+    height: 100vh;
+    min-height: 100vh;
+
+    scroll-snap-align: start;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 30px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(150, 70, 45, 0.08),
+            transparent 55%
+        );
+}
+
+/* TÍTULO PEQUENO */
+
+.pagina-signo .pequeno {
+    font-size: 11px;
+    letter-spacing: 5px;
+
+    opacity: 0.55;
+
+    margin-bottom: 15px;
+}
+
+/* CONSTELAÇÃO */
+
+.constelacao-aries {
+    position: relative;
+
+    width: 230px;
+    height: 190px;
+
+    margin-bottom: 10px;
+}
+
+/* ESTRELAS */
+
+.estrela {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 5px rgba(255,255,255,0.9),
+        0 0 12px rgba(255,255,255,0.5);
+
+    animation: pulsar-estrela 2.5s ease-in-out infinite;
+}
+
+/* POSIÇÕES DA CONSTELAÇÃO */
+
+.estrela-1 {
+    left: 28%;
+    top: 20%;
+}
+
+.estrela-2 {
+    left: 47%;
+    top: 35%;
+    animation-delay: 0.4s;
+}
+
+.estrela-3 {
+    left: 66%;
+    top: 23%;
+    animation-delay: 0.8s;
+}
+
+.estrela-4 {
+    left: 75%;
+    top: 55%;
+    animation-delay: 1.2s;
+}
+
+.estrela-5 {
+    left: 52%;
+    top: 70%;
+    animation-delay: 1.6s;
+}
+
+.estrela-6 {
+    left: 35%;
+    top: 55%;
+    animation-delay: 2s;
+}
+
+@keyframes pulsar-estrela {
+
+    0%, 100% {
+        opacity: 0.45;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+
+}
+
+/* LINHAS DA CONSTELAÇÃO */
+
+.constelacao-aries::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            28deg,
+            transparent 49.5%,
+            rgba(255,255,255,0.18) 50%,
+            transparent 50.5%
+        );
+
+    opacity: 0.6;
+}
+
+/* SÍMBOLO */
+
+.simbolo-aries {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 92px;
+
+    font-weight: normal;
+
+    color: rgba(255,255,255,0.95);
+
+    text-shadow:
+        0 0 12px rgba(255,255,255,0.7),
+        0 0 30px rgba(255,255,255,0.35),
+        0 0 60px rgba(255,255,255,0.15);
+
+    animation: brilho-aries 4s ease-in-out infinite;
+}
+
+@keyframes brilho-aries {
+
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.85;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.06);
+        opacity: 1;
+    }
+
+}
+
+/* NOME */
+
+.pagina-signo h1 {
+    font-size: 52px;
+
+    font-weight: normal;
+
+    font-style: italic;
+
+    margin: 0 0 20px;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    animation:
+        aparecer-signo 1.2s ease forwards;
+}
+
+/* TEXTO */
+
+.texto-signo {
+    max-width: 500px;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    animation:
+        aparecer-signo 1.2s ease 0.35s forwards;
+}
+
+/* DATA */
+
+.data-signo {
+    margin-top: 20px;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    opacity: 0;
+
+    animation:
+        aparecer-signo 1.2s ease 0.7s forwards;
+}
+
+@keyframes aparecer-signo {
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
